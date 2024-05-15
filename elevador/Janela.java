@@ -5,12 +5,12 @@ import java.awt.Font;
 
 import javax.swing.*;
 
-public class Janela extends JFrame{
-	
+public class Janela extends JFrame {
+
 	private JButton btnAbrir, btnFechar;
-	private JButton [] btnAndar;
+	private JButton[] btnAndar;
 	private JLabel lblInicio;
-	
+
 	public Janela() {
 		inicio();
 	}
@@ -20,10 +20,11 @@ public class Janela extends JFrame{
 		setSize(800, 600);
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		setLocationRelativeTo(null);
+		setResizable(false);
 		setLayout(null);
 		criarPainel();
 		setVisible(true);
-		
+
 	}
 
 	private void criarPainel() {
@@ -33,26 +34,31 @@ public class Janela extends JFrame{
 	}
 
 	private void criarBtnAndares() {
-		btnAndar = new JButton [5];
-		for(int i=1; i<btnAndar.length; i++) 
-			btnAndar[i] = new JButton(""+i);
-		
+		btnAndar = new JButton[5];
+		int x = 45;
+		for (int i = 0; i < btnAndar.length; i++) {
+			btnAndar[i] = new JButton("" + (i + 1));
+
+			btnAndar[i].setBounds(x, 460, 120, 60);
+			x += 145;
+			add(btnAndar[i]);
+		}
 	}
 
 	private void criarBtnAbrirFechar() {
-	btnAbrir = new JButton("Abrir");
-	btnFechar = new JButton("Fechar");
-	btnAbrir.setBounds(160, 285, 220, 60);
-	btnFechar.setBounds(400, 285, 220, 60);
-	add(btnAbrir);
-	add(btnFechar);
-		
+		btnAbrir = new JButton("Abrir");
+		btnFechar = new JButton("Fechar");
+		btnAbrir.setBounds(160, 285, 220, 60);
+		btnFechar.setBounds(400, 285, 220, 60);
+		add(btnAbrir);
+		add(btnFechar);
+
 	}
 
 	private Component criarLabel() {
-		//lblInicio = new JLabel (new Font ("Arial", Font.PLAIN. 18));
+		// lblInicio = new JLabel (new Font ("Arial", Font.PLAIN. 18));
 		lblInicio = new JLabel("Elevador KXPO: escolha um andar.");
-		lblInicio.setFont(new Font ("Arial", Font.PLAIN, 18));
+		lblInicio.setFont(new Font("Arial", Font.PLAIN, 18));
 		lblInicio.setVerticalAlignment(JLabel.TOP);
 		lblInicio.setHorizontalAlignment(JLabel.CENTER);
 		lblInicio.setBounds(0, 60, 800, 30);
